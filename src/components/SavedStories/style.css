@@ -1,0 +1,30 @@
+.saved-stories-wrapper {
+  width: calc(100vw - 3rem);
+}
+
+@media (min-width: 768px) {
+  .saved-stories-wrapper {
+    width: 100%;
+  }
+}
+
+.delete {
+  background-color: var(--lighter-red);
+  margin-left: auto;
+  font-weight: bold;
+  color: var(--secondary-red);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:focus,
+  &:hover,
+  &:focus-visible {
+    border: 1px solid var(--light-red);
+  }
+}

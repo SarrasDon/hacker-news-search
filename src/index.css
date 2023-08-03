@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  margin: 0;
+}
+
+:root {
+  --primary-blue: #033954;
+  --primary-green: #0edd98;
+  --primary-white: #fff;
+  --text-white: #fff;
+  --text-body: #20242e;
+  --text-subtext: #9d9da3;
+  --text-white-op: rgba(255, 255, 255, 0.7);
+  --text-dark-op: rgba(32, 36, 46, 0.4);
+  --secondary-red: #ea1042;
+  --secondary-dark-blue: #007cd5;
+  --secondary-blue: #21b7e9;
+  --secondary-yellow: #fb0;
+  --secondary-green: #008758;
+  --secondary-purple: #8200e5;
+  --bg-grey: #f7f8f9;
+  --bg-grey-light: #eaeae9;
+  --light-blue: #8cccf2;
+  --lighter-blue: rgba(140, 204, 242, 0.4);
+  --light-red: #ffafba;
+  --lighter-red: rgba(255, 175, 186, 0.4);
+  --border: #e5e5e5;
+  --box-shadow: #dcdcdc;
+  --line-secondary: #f2f2f2;
+  --font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-grey);
+  color: var(--text-body);
+  font-family: var(--font-family);
+}
+
+#root {
+  max-width: 1280px;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 1rem;
+}

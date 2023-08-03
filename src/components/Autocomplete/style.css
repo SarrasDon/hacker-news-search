@@ -1,0 +1,32 @@
+.search-section {
+  width: calc(100vw - 3rem);
+}
+
+@media (min-width: 768px) {
+  .search-section {
+    width: 100%;
+  }
+}
+
+.info-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.autocomplete-wrapper {
+  position: relative;
+}
+
+.autocomplete-input {
+  width: 100%;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+.autocomplete-input:focus {
+  border: 2px solid var(--secondary-dark-blue);
+  color: var(--secondary-dark-blue);
+}
