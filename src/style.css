@@ -1,0 +1,21 @@
+/* container */
+.wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto;
+}
+
+/* tablet breakpoint */
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    gap: 4rem;
+  }
+}

@@ -1,0 +1,7 @@
+.status-text {
+  min-height: 50px;
+  width: 100%;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+}
