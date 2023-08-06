@@ -1,4 +1,3 @@
-import { saveStory, useAppDispatch } from '../../store';
 import { Story } from '../../types/Story';
 import { List } from '../List';
 import { Status } from '../Status';
@@ -6,8 +5,7 @@ import { Result } from './Result';
 
 interface ResultsProps {
   debouncedSearchTerm: string;
-
-  data?: Story[];
+  stories?: Story[];
   hasError: boolean;
   isLoading: boolean;
   isFetching: boolean;
@@ -16,20 +14,12 @@ interface ResultsProps {
 
 export const Results = ({
   debouncedSearchTerm,
-  data = [],
+  stories = [],
   isFetching,
   isLoading,
   isSuccess,
   hasError,
 }: ResultsProps) => {
-  const dispatch = useAppDispatch();
-
-  const stories = data ?? [];
-
-  const onClick = (story: Story) => () => {
-    dispatch(saveStory({ story }));
-  };
-
   if (isLoading || isFetching) {
     return (
       <div className="autocomplete-results">
@@ -67,7 +57,6 @@ export const Results = ({
               searchWords={[debouncedSearchTerm]}
               key={story.objectID}
               story={story}
-              onClick={onClick(story)}
             />
           ))}
         </List>

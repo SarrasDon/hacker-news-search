@@ -1,14 +1,14 @@
 import { act, fireEvent, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { renderWithProviders } from './utils';
+import { renderWithProviders } from '../../test/utils';
 
 import { Store } from '@reduxjs/toolkit';
 import { rest } from 'msw';
-import { Autocomplete } from '../components';
-import { getResultId } from '../helpers';
-import { server } from '../setupTests';
-import { RootState, isStoryValid, setupStore, storiesApi } from '../store';
-import { mockApiResponse } from './mockApiResponse';
+import { Autocomplete } from '..';
+import { getResultId } from '../../helpers';
+import { server } from '../../setupTests';
+import { RootState, isStoryValid, setupStore, storiesApi } from '../../store';
+import { mockApiResponse } from '../../test/mocks/apiResponse';
 
 describe('Autocomplete', () => {
   let store: Store<RootState>;
@@ -29,19 +29,14 @@ describe('Autocomplete', () => {
     screen.getByTestId('autocomplete') as HTMLInputElement;
 
   it('Renders Loading Message', async () => {
-    renderWithProviders({ ui: <Autocomplete />, store });
+    act(() => {
+      renderWithProviders({ ui: <Autocomplete />, store });
+    });
 
     const autoCompleteInput = getAutocomplete();
-
-    act(() => {
-      fireEvent.focus(autoCompleteInput);
-    });
     expect(autoCompleteInput.value).toBe('');
 
-    act(() => {
-      fireEvent.change(autoCompleteInput, { target: { value: 'Javascript' } });
-    });
-
+    fireEvent.change(autoCompleteInput, { target: { value: 'Javascript' } });
     expect(autoCompleteInput.value).toBe('Javascript');
 
     // advance the debounce timer
@@ -60,10 +55,11 @@ describe('Autocomplete', () => {
       }),
     );
 
-    renderWithProviders({ ui: <Autocomplete />, store });
+    act(() => {
+      renderWithProviders({ ui: <Autocomplete />, store });
+    });
 
     const autoCompleteInput = getAutocomplete();
-    fireEvent.focus(autoCompleteInput);
     expect(autoCompleteInput.value).toBe('');
 
     fireEvent.change(autoCompleteInput, { target: { value: 'Javascript' } });
@@ -81,12 +77,13 @@ describe('Autocomplete', () => {
   });
 
   it('Renders results list', async () => {
-    renderWithProviders({ ui: <Autocomplete />, store });
+    act(() => {
+      renderWithProviders({ ui: <Autocomplete />, store });
+    });
 
     expect(getAutocomplete()).toBeTruthy();
 
     const autoCompleteInput = getAutocomplete();
-    fireEvent.focus(autoCompleteInput);
     expect(autoCompleteInput.value).toBe('');
 
     fireEvent.change(autoCompleteInput, { target: { value: 'Javascript' } });
@@ -97,7 +94,7 @@ describe('Autocomplete', () => {
       await vi.advanceTimersToNextTimerAsync();
     });
 
-    // redux toolkit must use some kind of timer in the background
+    // rtk use some kind of timer in the background
     // without this block, the request is stuck at pending and items are not rendered
     await act(async () => {
       await vi.runAllTimersAsync();
@@ -118,12 +115,13 @@ describe('Autocomplete', () => {
   });
 
   it('Renders hints correctly', async () => {
-    renderWithProviders({ ui: <Autocomplete />, store });
+    act(() => {
+      renderWithProviders({ ui: <Autocomplete />, store });
+    });
 
     expect(getAutocomplete()).toBeTruthy();
 
     const autoCompleteInput = getAutocomplete();
-    fireEvent.focus(autoCompleteInput);
     expect(autoCompleteInput.value).toBe('');
 
     expect(

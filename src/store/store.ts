@@ -6,18 +6,18 @@ import {
 import type { TypedUseSelectorHook } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { savedStoriesSlice } from './savedStories.slice';
 import { storiesApi } from './storiesApi';
-import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 import {
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
+  REHYDRATE,
+  persistReducer,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 

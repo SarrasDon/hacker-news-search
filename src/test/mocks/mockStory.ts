@@ -1,0 +1,18 @@
+export const mockStory = {
+  created_at: '',
+  title: 'Mock title about a Javascript story',
+  url: 'some_url',
+  author: '',
+  points: 0,
+  story_text: '',
+  comment_text: '',
+  num_comments: 0,
+  story_id: '',
+  story_title: '',
+  story_url: '',
+  parent_id: '',
+  created_at_i: 0,
+  relevancy_score: 0,
+  _tags: [],
+  objectID: 'some id',
+};

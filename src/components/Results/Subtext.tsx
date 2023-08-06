@@ -1,5 +1,5 @@
 import { Story } from '../../types/Story';
-import '../List/style.css';
+import './style.css';
 
 export const Subtext = ({ story }: { story: Story }) => {
   const { points, author, num_comments } = story;

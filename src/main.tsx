@@ -10,7 +10,7 @@ import { setupStore } from './store';
 const store = setupStore();
 const persistor = persistStore(store);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root') as Element).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

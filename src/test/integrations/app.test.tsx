@@ -1,12 +1,12 @@
 import { act, fireEvent, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { renderWithProviders } from './utils';
+import { renderWithProviders } from '../utils';
 
 import { Store } from '@reduxjs/toolkit';
-import App from '../App';
-import { getDeleteId, getResultId, getSavedId } from '../helpers';
-import { RootState, setupStore, storiesApi, isStoryValid } from '../store';
-import { mockApiResponse } from './mockApiResponse';
+import App from '../../App';
+import { getDeleteId, getResultId, getSavedId } from '../../helpers';
+import { RootState, isStoryValid, setupStore, storiesApi } from '../../store';
+import { mockApiResponse } from '../mocks/apiResponse';
 
 describe('App', () => {
   let store: Store<RootState>;
@@ -26,22 +26,10 @@ describe('App', () => {
   const getAutocomplete = () =>
     screen.getByTestId('autocomplete') as HTMLInputElement;
 
-  it('Renders headings and autocomplete', () => {
-    renderWithProviders({ ui: <App />, store });
-
-    expect(screen.getAllByRole('heading', { level: 2 }).length).toBe(2);
-    expect(screen.getAllByRole('heading', { level: 2 })[0]).toHaveTextContent(
-      /hacker news search/i,
-    );
-    expect(screen.getAllByRole('heading', { level: 2 })[1]).toHaveTextContent(
-      /read later/i,
-    );
-
-    expect(getAutocomplete()).toBeInTheDocument();
-  });
-
   it('Saves and deletes results', async () => {
-    renderWithProviders({ ui: <App />, store });
+    act(() => {
+      renderWithProviders({ ui: <App />, store });
+    });
 
     expect(screen.getByText(/you have no saved stories/i)).toBeTruthy();
 

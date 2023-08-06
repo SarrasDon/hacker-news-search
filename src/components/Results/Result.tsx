@@ -1,18 +1,24 @@
 import Highlighter from 'react-highlight-words';
-import '../List/style.css';
-import './style.css';
-import { Story } from '../../types/Story';
-import { Subtext } from '../List/Subtext';
 import { getResultId } from '../../helpers';
+import { saveStory, useAppDispatch } from '../../store';
+import { Story } from '../../types/Story';
+import '../List/style.css';
+import { Subtext } from './Subtext';
+import './style.css';
 
 interface ResultProps {
   story: Story;
-  onClick: () => void;
   searchWords: string[];
 }
 
-export const Result = ({ story, onClick, searchWords }: ResultProps) => {
+export const Result = ({ story, searchWords }: ResultProps) => {
+  const dispatch = useAppDispatch();
+
   const { title, story_title, objectID } = story;
+
+  const onClick = () => {
+    dispatch(saveStory({ story }));
+  };
 
   return (
     <li

@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { expect } from 'vitest';
-import { mockApiResponse } from './test/mockApiResponse';
+import { mockApiResponse } from './test/mocks/apiResponse';
 
 expect.extend(matchers);
 

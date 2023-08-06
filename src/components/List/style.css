@@ -30,38 +30,6 @@
   font-weight: bold;
 }
 
-.subtext {
-  display: flex;
-
-  font-size: 14px;
-  font-weight: normal;
-
-  > span {
-    color: var(--text-subtext);
-    position: relative;
-    padding: 0 0.6rem;
-    white-space: nowrap;
-  }
-
-  > span:first-child {
-    padding-left: 0;
-  }
-
-  > span:after {
-    content: '';
-    position: absolute;
-    border-left: 1px solid var(--text-subtext);
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 80%;
-  }
-
-  > span:last-child:after {
-    display: none; /* Hide the divider for the last block */
-  }
-}
-
 .hightlight {
   color: var(--secondary-yellow);
   background-color: transparent;

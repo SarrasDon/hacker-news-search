@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import { Story } from '../types/Story';
 
-type SavedStories = EntityState<Story>;
+export type SavedStories = EntityState<Story>;
 
 const savedStoriesAdapter = createEntityAdapter<Story>({
   selectId: (story) => story.objectID,
@@ -30,4 +30,8 @@ export const { saveStory, removeStory } = savedStoriesSlice.actions;
 export const {
   selectAll: selectSavedStories,
   selectById: selectSavedStoryById,
-} = savedStoriesAdapter.getSelectors();
+  selectIds: selectSavedStoryIds,
+} = savedStoriesAdapter.getSelectors(
+  (state: { [savedStoriesSlice.name]: SavedStories }) =>
+    state[savedStoriesSlice.name],
+);

@@ -1,12 +1,12 @@
 import { ChangeEvent, useState } from 'react';
 
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { useDebounce } from 'usehooks-ts';
+import { useSearchStoriesQuery } from '../../store';
 import { Heading } from '../Heading';
 import { Hint } from '../Hint';
 import { Results } from '../Results';
 import './style.css';
-import { useSearchStoriesQuery } from '../../store';
-import { skipToken } from '@reduxjs/toolkit/dist/query';
 
 export const DEBOUNCE_TIME_MS = 500;
 
@@ -60,7 +60,7 @@ export const Autocomplete = () => {
         {searchTerm && searchTerm.length >= 3 && (
           <Results
             debouncedSearchTerm={debouncedSearchTerm}
-            data={data}
+            stories={data}
             hasError={Boolean(error)}
             isLoading={isLoading}
             isFetching={isFetching}
